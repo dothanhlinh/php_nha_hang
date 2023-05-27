@@ -21,6 +21,7 @@
                             <th>Mã đơn</th>
                             <th>Khách hàng</th>
                             <th>SĐT</th>
+                            <th>CMND/TCCC</th>
                             <th>Ngày đặt</th>
                             <th>Ngày đến</th>
                             <th>Giờ đến</th>
@@ -35,6 +36,7 @@
                             <td>{{$order_detail->id}}</td>
                             <td>{{$order_detail->tenKH}}</td>
                             <td>{{$order_detail->SDT}}</td>
+                            <td>{{$order_detail->cmnd}}</td>
                             <td>{{$order_detail->created_date_time}}</td>
                             <td>{{$order_detail->ngayDen}}</td>
                             <td>{{$order_detail->gioDen}}</td>
@@ -69,7 +71,6 @@
                             <th>Tổng tiền</th>
                         </tr>
                     </thead>
-                    
                     <tbody> 
                        @foreach ($order_details as $item)
                        @php

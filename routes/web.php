@@ -6,6 +6,7 @@ use App\Http\Controllers\loaiMonAnController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\banController;
 use Illuminate\Support\Facades\Route;
 
 // trang người dùng
@@ -98,8 +99,22 @@ Route::get('/admin_quanlyloaimoan/{id}', [loaiMonAnController::class, 'destroy']
 // trang đặt bàn
 Route::get('/admin_quanlydatban',[orderController::class,'index_admin'])->name('admin.quanlydatban');
 Route::get('/admin_quanlydatban_view/{id}',[orderController::class,'order_details_admin'])->name('admin.admin_quanlydatban_view');
+Route::put('/admin_update_trangthai/{id}',[orderController::class,'updateorder'])->name('admin.admin_update_trangthai');
         
+Route::get('/admin_quanlydatban_dxt',[orderController::class,'daxacthuc_index'])->name('admin.daxacthuc_admin');
+Route::put('/admin_update_trangthai_dxt/{id}',[orderController::class,'updateorder_dxt'])->name('admin.admin_update_trangthai_dxt');
 
-
+Route::get('/admin_quanlydatban_ctt',[orderController::class,'chothanhtoan_index'])->name('admin.chothanhtoan_index');
+Route::put('/admin_update_trangthai_ctt/{id}',[orderController::class,'updateorder_ctt'])->name('admin.admin_update_trangthai_ctt');
 // Đăng nhập
 Route::get('/admin_dangnhap',[loginController::class,'index'])->name('admin.admin_dangnhap');
+
+
+//trang bàn ăn
+Route::get('/admin_quanlyban',[banController::class,'index_admin'])->name('admin.admin_quanlyban');
+
+Route::get('/admin_quanlyban_create',[banController::class,'create'])->name('admin.admin_quanlyban_create');
+Route::post('/admin_quanlyban_create',[banController::class,'store'])->name('admin.admin_quanlyban_store');
+Route::get('/admin_quanlyban/{id}', [banController::class, 'destroy'])->name('admin.admin_quanlyban_delete'); 
+Route::get('/admin_quanlyban_Edit/{id}',[banController::class,'Edit'])->name('admin.admin_quanlyban_Edit');
+Route::post('/admin_quanlyban_Edit/{id}',[banController::class,'SaveEdit'])->name('admin.admin_quanlyban_SaveEdit');

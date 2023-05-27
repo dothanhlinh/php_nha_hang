@@ -347,8 +347,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="{{route('admin.daxacthuc_admin')}}">
                                     <span class="sub-item">Đã xác thực</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.chothanhtoan_index')}}">
+                                    <span class="sub-item">Chờ thanh toán</span>
                                 </a>
                             </li>
                             <li>
@@ -396,19 +401,19 @@
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#tables">
                         <i class="fas fa-user-alt"></i>
-                        <p>Quản lý nhân viên</p>
+                        <p>Quản lý User</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="tables/tables.html">
-                                    <span class="sub-item">Basic Table</span>
+                                    <span class="sub-item">Quản lý nhân viên</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="tables/datatables.html">
-                                    <span class="sub-item">Datatables</span>
+                                    <span class="sub-item">Quản lý khách hàng </span>
                                 </a>
                             </li>
                         </ul>
@@ -418,21 +423,21 @@
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#charts">
                         <i class="fas fa-user-alt"></i>
-                        <p>Quản lý khách hàng</p>
+                        <p>Quản lý bàn ăn</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="charts">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="charts/charts.html">
-                                    <span class="sub-item">Chart Js</span>
+                                <a href="{{route('admin.admin_quanlyban')}}">
+                                    <span class="sub-item">Bàn Ăn</span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="charts/sparkline.html">
                                     <span class="sub-item">Sparkline</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>

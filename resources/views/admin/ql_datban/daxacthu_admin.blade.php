@@ -52,8 +52,8 @@
                                             
                                                 @endif
                                                 @if ($item->trangThai==3)
-                                                <p style="color: rgb(36, 172, 36)"> Chờ thanh Toán</p>
-
+                                                    Chờ thanh Toán
+                                            
                                                 @endif
                                                 @if ($item->trangThai==4)
                                                     Đã Thanh Toán 
@@ -61,7 +61,7 @@
                                             </td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <button type="button" title=""data-toggle="modal" data-target="#exampleModal{{$item->id}}" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <button type="button" title=""data-toggle="modal" data-target="#exampleModal_dxt{{$item->id}}" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                         <i class="fas fa-check-circle"></i>
                                                        
                                                     </button>
@@ -82,7 +82,7 @@
                                         <!-- Button trigger modal -->
                             
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal_dxt{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -92,9 +92,9 @@
                                                 </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                Bạn có muốn xác thực đơn hàng không ?
+                                                    Thanh toán đơn bàn không ?
                                                 </div>
-                                                <form action="{{route('admin.admin_update_trangthai',$item->id)}}" method="post">
+                                                <form action="{{route('admin.admin_update_trangthai_dxt',$item->id)}}" method="post">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="modal-footer">
@@ -105,8 +105,6 @@
                                             </div>
                                             </div>
                                         </div>
-
-
                                         @endforeach
                                     </tbody>
                                 </table>

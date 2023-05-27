@@ -10,8 +10,17 @@ class orderController extends Controller
 {
     // Phần addmin
     public function index_admin(){
-        $_news = datbanModel::limit(8)->get();
+        $_news = datbanModel::all()->where('trangThai',1);
         return view('admin.ql_datban.datban_admin',['baiviet'=> $_news]);
+    }
+    
+    public function daxacthuc_index(){
+        $_news = datbanModel::all()->where('trangThai',2);
+        return view('admin.ql_datban.daxacthu_admin',['baiviet'=> $_news]);
+    } 
+    public function chothanhtoan_index(){
+        $_news = datbanModel::all()->where('trangThai',3);
+        return view('admin.ql_datban.chothanhtoan_admin',['baiviet'=> $_news]);
     }
     
     public function order_details_admin($id){
@@ -19,8 +28,41 @@ class orderController extends Controller
         $res1 = ctdatbanModel::with('monan_')->where('idDatBan',$id)->get();
         return view('admin.ql_datban.view_datban_admin',['order_detail'=> $res,'order_details'=> $res1]);
     }
+    public function updateorder_ctt($id){
+        $baiviet = datbanModel::find($id);
+        if ($baiviet) {
+            $baiviet->trangThai = 4;
+            $baiviet->lu_updated = date('Y-m-d H:i:s');
+            $baiviet->update();
+            return redirect()->route('admin.chothanhtoan_index');
+        } else {
+            return redirect()->route('admin.chothanhtoan_index');
+        }
+    }
+    public function updateorder_dxt($id){
+        $baiviet = datbanModel::find($id);
+        if ($baiviet) {
+            $baiviet->trangThai = 3;
+            $baiviet->lu_updated = date('Y-m-d H:i:s');
+            $baiviet->update();
+            return redirect()->route('admin.daxacthuc_admin');
+        } else {
+            return redirect()->route('admin.daxacthuc_admin');
+        }
+    }
+    public function updateorder($id){
+        $baiviet = datbanModel::find($id);
+        if ($baiviet) {
+            $baiviet->trangThai = 2;
+            $baiviet->lu_updated = date('Y-m-d H:i:s');
+            $baiviet->update();
+            return redirect()->route('admin.quanlydatban');
+        } else {
+            return redirect()->route('admin.quanlydatban');
+        }
+    }
 
-    
+
     public function destroy($id){
         $res = datbanModel::find($id);
         $res -> delete();

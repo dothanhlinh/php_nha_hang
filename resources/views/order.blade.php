@@ -43,7 +43,11 @@
 									<input type="text" name="sdt" class="form-control" placeholder="Số Điện Thoại"required>
 								</div>
 							</div>
-		
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="number" name="cmnd" class="form-control" placeholder="Thẻ căn cước công dân"required>
+								</div>
+							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<div class="input-wrap">

@@ -32,6 +32,7 @@ class monAnController extends Controller
         $post->ngayDen = date('Y-m-d H:i:s');
         $post->gioDen = date('Y-m-d H:i:s');
         $post->soLuongNguoi = $request->input('soluongnguoi');
+        $post->cmnd = $request->input('cmnd');
         $post->Soluongban = $request->input('soluongban');
         $post->created_date_time = date('Y-m-d H:i:s');
         $post->trangThai = 1;
