@@ -5,7 +5,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Thêm Tin Tức </h4>
+                <h4 class="page-title">Cập nhật thực đơn món ăn </h4>
             </div>
             <div class="row">
                 <div class="col-md-12">

@@ -17,4 +17,8 @@ class ctdatbanModel extends Model
     public function monan_(){
         return $this->belongsTo(monanModel::class,'id','idLoaiMonAn');
     }
+    public static function thongkedoanhthu()
+    {
+        return self::sum(ctdatbanModel::raw('soLuong * 	idDatBan'));
+    }
 }

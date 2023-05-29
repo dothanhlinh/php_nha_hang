@@ -14,12 +14,29 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class monAnController extends Controller
 {
+    // function __construct()
+    // {
+    //      $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index_admin']]);
+    //      $this->middleware('permission:product-create', ['only' => ['create']]);
+    //      $this->middleware('permission:product-edit', ['only' => ['update']]);
+    //      $this->middleware('permission:product-delete', ['only' => ['destroy']]);
+    // }
+    function __construct()
+    {
+         $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index_admin']]);
+         $this->middleware('permission:role-create', ['only' => ['create']]);
+         $this->middleware('permission:role-edit', ['only' => ['update']]);
+         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+    }
     public function index(){
 
         $_monan = monanModel::all()->where('idLoaiMonAn',1);
         $_monan1 = monanModel::all()->where('idLoaiMonAn',2);
         $_monan2 = monanModel::all()->where('idLoaiMonAn',3);
-        return view('menu',['res'=> $_monan,'res1'=> $_monan1,'res2'=> $_monan2]);
+        $_monan3 = monanModel::all()->where('idLoaiMonAn',4);
+        $_monan4 = monanModel::all()->where('idLoaiMonAn',6);
+        $_monan5 = monanModel::all()->where('idLoaiMonAn',11);
+        return view('menu',['res'=> $_monan,'res1'=> $_monan1,'res2'=> $_monan2,'res3'=> $_monan3,'res4'=> $_monan4,'res5'=> $_monan5]);
     }
     // public function order(){
     //     view('order');

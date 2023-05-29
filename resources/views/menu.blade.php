@@ -43,7 +43,7 @@
                                     <h3>{{$item->tenMonAn}}</h3>
                                 </div>
                                 <div class="one-forth">
-                                    <span class="price" value="{{$item->id }}">{{$item->idGia }}</span>
+                                    <span class="price" value="{{$item->id }}">${{$item->idGia }}</span>
                                 </div>
                             </div>
                             <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
@@ -174,7 +174,7 @@
                                     <h3>{{$item->tenMonAn}}</h3>
                                 </div>
                                 <div class="one-forth">
-                                    <span class="price" value="{{$item->id }}">{{$item->idGia }}</span>
+                                    <span class="price" value="{{$item->id }}">${{$item->idGia }}</span>
                                 </div>
                             </div>
                             <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
@@ -300,7 +300,7 @@
                                     <h3>{{$item->tenMonAn}}</h3>
                                 </div>
                                 <div class="one-forth">
-                                    <span class="price" value="{{$item->id }}">{{$item->idGia }}</span>
+                                    <span class="price" value="{{$item->id }}">${{$item->idGia }}</span>
                                 </div>
                             </div>
                             <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
@@ -391,76 +391,24 @@
                         <h3>Món Tráng Miệng</h3>
                     </div>
                     
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/dessert-1.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
+                    @foreach ($res3 as $item) 
+                        <div class="menus d-flex ftco-animate">
+                            <div class="menu-img img" style="background-image: url(/assets/fronts/images/{{$item->hinhAnh}});" ></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{$item->tenMonAn}}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price" value="{{$item->id }}">${{$item->idGia }}</span>
+                                    </div>
                                 </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
+                                <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+                                <a style="color: red;"id="liveToastBtn" href="{{route('home.add_to_order',$item->id)}}">Thêm Vào Đặt Bàn</a>
+                                
                             </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
                         </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/dessert-2.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/dessert-3.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/dessert-4.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus border-bottom-0 d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/dessert-5.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
+                    @endforeach
                     <span class="flat flaticon-cupcake" style="left: 0;"></span>
                     <span class="flat flaticon-ice-cream" style="right: 0;"></span>
                 </div>
@@ -471,118 +419,25 @@
                     <div class="heading-menu text-center ftco-animate">
                         <h3>Rượu</h3>
                     </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/wine-1.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
+                    @foreach ($res5 as $item) 
+                        <div class="menus d-flex ftco-animate">
+                            <div class="menu-img img" style="background-image: url(/assets/fronts/images/{{$item->hinhAnh}});" ></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{$item->tenMonAn}}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price" value="{{$item->id }}">{{$item->idGia }}</span>
+                                    </div>
                                 </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
+                                <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+                                <a style="color: red;"id="liveToastBtn" href="{{route('home.add_to_order',$item->id)}}">Thêm Vào Đặt Bàn</a>
+                                
                             </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
                         </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/wine-2.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/wine-3.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/wine-4.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/wine-5.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/wine-6.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/wine-7.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus border-bottom-0 d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/wine-8.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
+                    @endforeach
+                    
                     <span class="flat flaticon-wine" style="left: 0;"></span>
                     <span class="flat flaticon-wine-1" style="right: 0;"></span>
                 </div>
@@ -593,104 +448,25 @@
                     <div class="heading-menu text-center ftco-animate">
                         <h3>Đồ Uống &amp; Trà</h3>
                     </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/drink-1.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
+                    @foreach ($res4 as $item) 
+                        <div class="menus d-flex ftco-animate">
+                            <div class="menu-img img" style="background-image: url(/assets/fronts/images/{{$item->hinhAnh}});" ></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{$item->tenMonAn}}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price" value="{{$item->id }}">${{$item->idGia }}</span>
+                                    </div>
                                 </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
+                                <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+                                <a style="color: red;"id="liveToastBtn" href="{{route('home.add_to_order',$item->id)}}">Thêm Vào Đặt Bàn</a>
+                                
                             </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
                         </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/drink-2.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/drink-3.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/drink-4.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/drink-5.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/drink-6.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus border-bottom-0 d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url(/assets/fronts/images/drink-7.jpg);"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
+                    @endforeach
+      
                     <span class="flat flaticon-wine" style="left: 0;"></span>
                     <span class="flat flaticon-wine-1" style="right: 0;"></span>
                 </div>

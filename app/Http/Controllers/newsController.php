@@ -10,6 +10,13 @@ use function Psy\debug;
 
 class newsController extends Controller
 {
+    // function __construct()
+    // {
+    //      $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index']]);
+    //      $this->middleware('permission:role-create', ['only' => ['create']]);
+    //      $this->middleware('permission:role-edit', ['only' => ['update']]);
+    //      $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+    // }
     // Phần client
     public function index(){
         $_news = newsModel::limit(8)->get()->where('trangThai',1);
@@ -20,7 +27,10 @@ class newsController extends Controller
         $res = newsModel::find($id);
         return view('detail_news',['baiviet'=> $res]);
     }
-
+    public function search(Request $request){
+        $news =newsModel::where('tieuDe','like','%'.$request->timkiem.'%')->get();
+        return view('timkiemnews',compact('news'));
+    }
 
     // Phần addmin
     public function index_admin(){

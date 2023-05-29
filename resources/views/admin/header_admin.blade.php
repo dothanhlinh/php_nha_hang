@@ -247,7 +247,15 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Logout</a>
+                                @if(auth()->check())
+                                    <li class="nav-item">
+                                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                                        </form>
+                                    </li>
+                                @endif
+                                {{-- <a class="dropdown-item" href="{{route('logout')}}">Logout</a> --}}
                             </li>
                         </div>
                     </ul>
@@ -299,9 +307,9 @@
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item active">
-                    <a data-toggle="collapse" href="{{route('admin.index_admin')}}" class="collapsed" aria-expanded="false">
+                    <a data-toggle="collapse" href="{{route('admin.trangchu_admin')}}" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
-                        <p>Biểu Đồ</p>
+                        <p>Trang chủ</p>
                     </a>
                    
                 </li>
@@ -310,6 +318,13 @@
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
                     <h4 class="text-section">Quản Trị</h4>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.trangchu_admin')}}">
+                        <i class="fas fa-th-list "></i>
+                        <p>Thống kê</p>
+                        
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#maps">
@@ -353,12 +368,17 @@
                             </li>
                             <li>
                                 <a href="{{route('admin.chothanhtoan_index')}}">
-                                    <span class="sub-item">Chờ thanh toán</span>
+                                    <span class="sub-item">Đã thanh toán</span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="components/gridsystem.html">
                                     <span class="sub-item">Đã thanh toán</span>
+                                </a>
+                            </li> --}}
+                            <li>
+                                <a href="{{route('admin.lichsuxoa')}}">
+                                    <span class="sub-item">Lịch sử xoá</span>
                                 </a>
                             </li>
                         </ul>
@@ -366,7 +386,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#sidebarLayouts">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-pen-square"></i>
                         <p>Quản lý bài viết</p>
                         <span class="caret"></span>
                     </a>
@@ -384,7 +404,7 @@
                
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#forms">
-                        <i class="fas fa-pen-square"></i>
+                        <i class=" fas fa-dollar-sign"></i>
                         <p>Quản lý giá bán</p>
                         <span class="caret"></span>
                     </a>
@@ -407,15 +427,15 @@
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="tables/tables.html">
+                                <a href="{{route('admin.admin_quanlynhanvien')}}">
                                     <span class="sub-item">Quản lý nhân viên</span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="tables/datatables.html">
                                     <span class="sub-item">Quản lý khách hàng </span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
@@ -441,13 +461,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a href="widgets.html">
-                        <i class="fas fa-dollar-sign"></i>
-                        <p>Quản lý giá bán</p>
-                        {{-- <span class="badge badge-success">4</span> --}}
-                    </a>
-                </li>
+                
               
             </ul>
         </div>

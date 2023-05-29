@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class banController extends Controller
 {
+     function __construct()
+    {
+         $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index_admin']]);
+         $this->middleware('permission:product-create', ['only' => ['create']]);
+         $this->middleware('permission:product-edit', ['only' => ['update']]);
+         $this->middleware('permission:product-delete', ['only' => ['destroy']]);
+    }
       // Phần admin
       public function index_admin(){
         $ban = banModel::all();

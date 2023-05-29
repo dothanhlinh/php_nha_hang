@@ -13,6 +13,9 @@ class datbanModel extends Model
     public $timestamps = false;
     protected $table ='datban';
     protected $filltable =['id', 'idKH', 'idBan', 'SDT', 'ngayDen', 'gioDen', 'soLuongNguoi', 'Soluongban', 'tenKH', 'created_by_user_id', 'trangThai', 'created_date_time', 'lu_updated', 'lu_user_id', 'cmnd'];
-
+    public static function thongkedondatban()
+    {
+        return self::count();
+    }
     
 }

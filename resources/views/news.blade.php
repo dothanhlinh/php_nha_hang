@@ -12,11 +12,19 @@
         </div>
       </div>
     </div>
-  </section>
-  
-  <section class="ftco-section bg-light">
-   <div class="container">
-    <div class="row">
+</section>
+
+<section class="mt-4">
+  <div class="container">
+    <form  action="{{ route('home.search') }}" method="GET">
+        <input  type="text" style="width: 32%;" name="timkiem" placeholder="Nhập từ khóa tìm kiếm">
+        <button type="submit" class="btn btn-success"> Tìm kiếm </button>
+    </form>
+  </div>
+</section>
+  <section class="mt-5 bg-light">
+    <div class="container">
+      <div class="row">
       @foreach ($baiviet as $item)  
         <div class="col-md-4 ftco-animate">
           <div class="blog-entry">

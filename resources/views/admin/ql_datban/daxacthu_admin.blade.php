@@ -12,12 +12,9 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                {{-- <a href="{{route('admin.ql_news.create_news')}}">
-                                    <button class="btn btn-primary btn-round ml-auto" >
-                                        <i class="fa fa-plus"></i>
-                                        Thêm mới
-                                    </button>
-                                </a> --}}
+                                <a >
+                                    Trang đã xác thực đơn hàng 
+                                 </a>
                             </div>
                         </div>
                         <div class="card-body">

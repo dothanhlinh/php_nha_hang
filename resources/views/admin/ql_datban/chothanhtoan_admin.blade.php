@@ -9,15 +9,13 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                   
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                {{-- <a href="{{route('admin.ql_news.create_news')}}">
-                                    <button class="btn btn-primary btn-round ml-auto" >
-                                        <i class="fa fa-plus"></i>
-                                        Thêm mới
-                                    </button>
-                                </a> --}}
+                                <a >
+                                   Trang Thanh Toán
+                                </a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -29,7 +27,7 @@
                                             <th>Khách hàng</th>
                                             <th>SĐT</th>
                                             <th>Ngày đặt</th>
-                                            <th>Trạng Thái</th>
+                                            {{-- <th>Trạng Thái</th> --}}
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -42,7 +40,7 @@
                                             <td>{{$item->SDT}}</td>
                                             <td>{{$item->created_date_time}}</td>
                                             
-                                            <td>
+                                            {{-- <td>
                                                 @if ($item->trangThai==1)
                                                 <p style="color: red"> Đơn đặt bàn mới</p>
                                                 @endif
@@ -58,12 +56,13 @@
                                                 @if ($item->trangThai==4)
                                                     Đã Thanh Toán 
                                                 @endif
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 <div class="form-button-action">
-                                                    <button type="button" title=""data-toggle="modal" data-target="#exampleModal_dxt{{$item->id}}" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fas fa-check-circle"></i>
-                                                       
+                                                    <button type="button" title=""class="btn btn-link btn-primary btn-lg">
+                                                    <a href="{{route('admin.admin_hoadonban_thanhtoan',$item->id)}}">
+                                                        Thanh toán
+                                                    </a>
                                                     </button>
                                                     <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Detail">
                                                         <a href="{{route('admin.admin_quanlydatban_view',$item->id)}}">

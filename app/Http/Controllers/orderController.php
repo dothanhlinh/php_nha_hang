@@ -2,13 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\banModel;
 use App\Models\ctdatbanModel;
 use Illuminate\Http\Request;
 use App\Models\datbanModel;
+use App\Models\nhanvienModel;
 
 class orderController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index_admin']]);
+         $this->middleware('permission:role-create', ['only' => ['create']]);
+         $this->middleware('permission:role-edit', ['only' => ['update']]);
+         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+    }
     // Phần addmin
+
+    public function thanhtoandonhang($id){
+        $res = datbanModel::find($id);
+        $res1 = ctdatbanModel::with('monan_')->where('idDatBan',$id)->get();
+        $_ban = banModel::all();
+        return view('admin.ql_datban.hoadonban',['order_detail'=> $res,'order_details'=> $res1,'ban'=> $_ban]);
+    }
+    public function hoadonban(){
+        return view('admin.ql_datban.hoadonban');
+    }
+    public function lichsuxoa(){
+        $_news = datbanModel::all()->where('trangThai',-1);
+        return view('admin.ql_datban.lichsuxoa_admin',['baiviet'=> $_news]);
+    }
+
     public function index_admin(){
         $_news = datbanModel::all()->where('trangThai',1);
         return view('admin.ql_datban.datban_admin',['baiviet'=> $_news]);
@@ -26,7 +51,26 @@ class orderController extends Controller
     public function order_details_admin($id){
         $res = datbanModel::find($id);
         $res1 = ctdatbanModel::with('monan_')->where('idDatBan',$id)->get();
-        return view('admin.ql_datban.view_datban_admin',['order_detail'=> $res,'order_details'=> $res1]);
+        $_ban = banModel::all();
+        return view('admin.ql_datban.view_datban_admin',['order_detail'=> $res,'order_details'=> $res1,'ban'=> $_ban]);
+    }
+    public function update_detail($id,Request $request){
+        $post = datbanModel::find($id);
+        $post->idBan = $request->input('idBan');
+        $post->save();
+        return redirect()->route('admin.quanlydatban');
+    }
+
+    public function updateorder_lichsuxoa($id){
+        $baiviet = datbanModel::find($id);
+        if ($baiviet) {
+            $baiviet->trangThai = -1;
+            $baiviet->lu_updated = date('Y-m-d H:i:s');
+            $baiviet->update();
+            return redirect()->route('admin.quanlydatban');
+        } else {
+            return redirect()->route('admin.quanlydatban');
+        }
     }
     public function updateorder_ctt($id){
         $baiviet = datbanModel::find($id);
@@ -61,35 +105,41 @@ class orderController extends Controller
             return redirect()->route('admin.quanlydatban');
         }
     }
-
-
     public function destroy($id){
-        $res = datbanModel::find($id);
-        $res -> delete();
-        return redirect()->route('admin.news_admin');
-    }
 
+        // Tìm đơn hàng cần xoá
+        $order = datbanModel::findOrFail($id);
+        // Xoá chi tiết đơn hàng
+        $orderDetails = ctdatbanModel::where('idDatBan', $order->id)->get();
+        foreach ($orderDetails as $orderDetail) {
+            $orderDetail->delete();
+        }
+        // Xoá đơn hàng
+        $order->delete();
+        // Chuyển hướng hoặc trả về thông báo thành công
+        return view('admin.ql_datban.lichsuxoa_admin');
+    }
     public function create(){
-        $nv = datbanModel::all();
-        return view('admin.ql_news.create_news',['nhanvien'=> $nv]);
+        $datban = datbanModel::all();
+        $nhanvien = nhanvienModel::all();
+        $_ban = banModel::all();
+        return view('admin.ql_datban.create_datban_admin',['datban'=> $datban,'nhanvien'=>$nhanvien,'ban'=>$_ban]);
     }
     public function store(Request $request){
-        if ($request->has('hinhanh')){
-            $file = $request-> hinhanh;
-            $file_name = $file->getClientOriginalName();
-            // dd($file_name);
-            $file->move(public_path('assets/fronts/images'),$file_name);
-        }
-        $request-> merge(['hinhanh'=> $file_name]);
-        // dd($request->all());
         $post = new datbanModel();
-        $post->idLoaiMonAn = $request->input('tieude');
-        $post->hinhAnh = $request->input('hinhanh');
-        $post->trangThai = $request->input('trangthai');
-        $post->noiDung = $request->input('noidung');
+        $post->tenKH = $request->input('tenKH');
+        $post->idBan = $request->input('idBan');
+        $post->SDT = $request->input('SDT');
+        $post->ngayDen = date('Y-m-d H:i:s');;
+        $post->gioDen = date('Y-m-d H:i:s');;
+        $post->soLuongNguoi = $request->input('soLuongNguoi');
+        $post->Soluongban = $request->input('Soluongban');
+        $post->tenKH = $request->input('tenKH');
+        $post->created_date_time = date('Y-m-d H:i:s');
+        $post->trangThai = 1;
         $post->created_by_user_id= $request->input('created_by_user_id');
         $post->save();
-        return redirect()->route('admin.news_admin');
+        return redirect()->route('admin.quanlydatban');
     }
     public function Edit($id){
         $res = datbanModel::find($id);

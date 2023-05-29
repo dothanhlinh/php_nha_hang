@@ -11,13 +11,17 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
+                            <div class="mb-3 mt-3">
+                                Trang chưa xác thực đơn hàng 
+                             </div>
                             <div class="d-flex align-items-center">
-                                {{-- <a href="{{route('admin.ql_news.create_news')}}">
+                                <a href="{{route('admin.admin_quanlydatban_create')}}">
                                     <button class="btn btn-primary btn-round ml-auto" >
                                         <i class="fa fa-plus"></i>
                                         Thêm mới
                                     </button>
-                                </a> --}}
+                                </a>
+                               
                             </div>
                         </div>
                         <div class="card-body">
@@ -72,7 +76,7 @@
                                                      </button>
                                                     
                                                     <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <a onclick="return confirm('Bạn có có muốn xoá không ?');" href="{{route('admin.delete_admin',$item->id)}}">
+                                                        <a onclick="return confirm('Bạn có có muốn xoá không ?');" href="{{route('admin.updateorder_lichsuxoa',$item->id)}}">
                                                             <i class="fa fa-times"></i>
                                                         </a>
                                                     </button>

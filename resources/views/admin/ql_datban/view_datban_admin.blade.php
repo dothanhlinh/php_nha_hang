@@ -7,11 +7,31 @@
 @endphp
 <div class="main-panel">
     <div class="content">
-       
+        <section>
+            <div class="ml-4">
+                <form action="{{route('admin.admin_quanlydatban_ban',$order_detail->id)}}" method="post">
+                    @csrf
+                    <div class="col-md-6 mt-3">
+                        <label for="" >Chọn Bàn ăn</label>
+                        <select style="width: 50%;" name="idBan" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" >
+                          <option selected>Chọn bàn ăn</option>
+                           @foreach ($ban as $item)
+                            <option value="{!!$item->id!!}"{{($item->id == $order_detail->idBan)?'selected':''}}>{!!$item->tenBan!!}</option>
+                          @endforeach
+                        </select>
+                        <a href=""class="mr-2 ">
+                            <button type="submit" class="btn_save"  >
+                                <i class="bi bi-check mr-2 " style="font-size: 15px;"></i>Xác nhận
+                            </button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </section>
         <div class="page-inner">
             <div class="page-header">
                 <div class="header_detail">
-                    <h2 class="panel-heading text-center" style="line-height:50px; color:#31708f;background-color: #bce8f1;width:600%;height:50px;">Thông tin khách hàng</h2>
+                    <h2 class="panel-heading text-center" style="line-height:50px; color:#31708f;background-color: #bce8f1;width:610%;height:50px;">Thông tin khách hàng</h2>
                 </div>
             </div>
             <div class="row">
@@ -42,8 +62,6 @@
                             <td>{{$order_detail->gioDen}}</td>
                             <td>{{$order_detail->Soluongban}}</td>
                             <td>{{$order_detail->soLuongNguoi}}</td>
-                            
-                            
                         </tr>
                     </tbody>
                 </table>
@@ -92,18 +110,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="mt-3 ">
-                    <a href="" class="mr-2 ">
-                        <button type="button" class="btn_close"  >
-                            <i class="glyphicon glyphicon-minus-sign mr-2 " style="font-size: 15px;"></i>Bỏ qua
-                        </button>
-                    </a>
-                    <a href=""class="mr-2 ">
-                        <button type="button" class="btn_save"  >
-                            <i class="bi bi-check mr-2 " style="font-size: 15px;"></i>Xác nhận
-                        </button>
-                    </a>
-                  </div>
+                
+                
             </div>
             
         </div>

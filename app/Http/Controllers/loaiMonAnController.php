@@ -15,7 +15,13 @@ class loaiMonAnController extends Controller
     //     return view('menu',['res'=> $_monan,'res1'=> $_monan1,'res2'=> $_monan2]);
     // }
 
-
+    function __construct()
+    {
+         $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index_admin']]);
+         $this->middleware('permission:product-create', ['only' => ['create']]);
+         $this->middleware('permission:product-edit', ['only' => ['update']]);
+         $this->middleware('permission:product-delete', ['only' => ['destroy']]);
+    }
      // Phần admin
      public function index_admin(){
         $loaimonan = loaimonanModel::all();
